@@ -3,16 +3,19 @@ import { Store } from '@ngrx/store';
 import { AppState } from '../app-state';
 import { Jedi } from '../jedi.model';
 import { Observable } from 'rxjs';
+import { addJedi, removeJedi, loadJedis } from './jedi.actions';
 
 @Component({
   selector: 'jedi-list',
   template: `
-    <div *ngFor="let jedi of list$ | async">
-    {{ jedi.name }}<button (click)="remove(jedi.id)" >Remove</button>
-    </div>
-    <input [(ngModel)]="newJedi" placeholder="" />
-    <button (click)="add()">Add</button>
-    <button (click)="clear()">Clear</button>
+    <form name="jediForm">
+      <div *ngFor="let jedi of list$ | async">
+      {{ jedi.name }}<button (click)="remove(jedi.id)" >Remove</button>
+      </div>
+      <input name="newJedi" [(ngModel)]="newJedi" placeholder="" />
+      <button (click)="add()">Add</button>
+      <button (click)="clear()">Clear</button>
+    </form>
   `,
   styles: []
 })
@@ -29,17 +32,17 @@ export class JediListComponent implements OnInit {
   }
 
   add(){
-    this.store.dispatch({ type: 'ADD_JEDI', payload : { id: this.counter++, name: this.newJedi } });
+    this.store.dispatch(addJedi(this.counter++, this.newJedi));
     this.newJedi = "";
   }
 
   clear(){
-    this.store.dispatch({type: 'LOAD_JEDIS', payload: []});
+    this.store.dispatch(loadJedis([]));
     this.counter = 0;
   }
 
   remove(id){
-    this.store.dispatch({ type: 'REMOVE_JEDI', payload: { id }})
+    this.store.dispatch(removeJedi(id));
   }
 
 
