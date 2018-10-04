@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { AppState } from '../app-state';
-import { Jedi } from '../jedi.model';
+import { AppState } from '../../app-state';
+import { Jedi } from '../../../models/jedi.model';
 import { Observable } from 'rxjs';
-import { addJedi, removeJedi, loadJedis } from './jedi.actions';
+import { addJedi, removeJedi, loadJedis } from './jedi-list.actions';
 
 @Component({
   selector: 'jedi-list',
@@ -32,7 +32,7 @@ export class JediListComponent implements OnInit {
   }
 
   add(){
-    this.store.dispatch(addJedi(this.counter++, this.newJedi));
+    this.store.dispatch(addJedi(this.newJedi));
     this.newJedi = "";
   }
 

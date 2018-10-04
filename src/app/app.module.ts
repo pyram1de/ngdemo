@@ -2,22 +2,20 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { StoreModule } from '@ngrx/store';
 import { AppComponent } from './app.component';
-import { counterReducer } from './reducer'; 
-import { jediListReducer } from './jedi-list.reducer';
-import { JediListComponent } from './jedi-list/jedi-list.component'; 
 import { FormsModule } from '@angular/forms';
+import { JediModule } from './jedi/jedi.module';
+import { CounterModule } from './counter/counter.module';
 
 @NgModule({
   declarations: [
-    AppComponent,
-    JediListComponent
+    AppComponent
   ],
   imports: [
+    JediModule,
+    CounterModule,
     FormsModule,
     BrowserModule,
-    StoreModule.forRoot({
-      counter : counterReducer,
-      jediList: jediListReducer })
+    StoreModule.forRoot({ })
   ],
   providers: [],
   bootstrap: [AppComponent]
