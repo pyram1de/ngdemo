@@ -8,6 +8,7 @@ import { Store } from '@ngrx/store';
   {{ counter$ | async }}
   <button (click)="increment()">Increment</button>
   <button (click)="decrement()">Decrement</button>
+  <jedi-list></jedi-list>
   `,
   styleUrls: ['./app.component.css']
 })

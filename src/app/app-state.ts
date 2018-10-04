@@ -1,3 +1,6 @@
+import { Jedi } from './jedi.model';
+
 export interface AppState {
-    counter : number;
+    counter : number,
+    jediList: Jedi[]
 }
