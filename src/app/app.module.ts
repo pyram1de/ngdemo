@@ -5,6 +5,8 @@ import { AppComponent } from './app.component';
 import { FormsModule } from '@angular/forms';
 import { JediModule } from './jedi/jedi.module';
 import { CounterModule } from './counter/counter.module';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+
 
 @NgModule({
   declarations: [
@@ -15,7 +17,11 @@ import { CounterModule } from './counter/counter.module';
     CounterModule,
     FormsModule,
     BrowserModule,
-    StoreModule.forRoot({ })
+    StoreModule.forRoot({ 
+    }), 
+    StoreDevtoolsModule.instrument({
+      maxAge: 25
+    })
   ],
   providers: [],
   bootstrap: [AppComponent]
