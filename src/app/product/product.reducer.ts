@@ -1,9 +1,10 @@
+import { FeatureProducts } from './product.reducer';
 import { ActionReducerMap } from '@ngrx/store';
 import { FETCHING_PRODUCTS, FETCHING_PRODUCTS_ERROR, FETCHING_PRODUCTS_SUCCESSFULLY } from './product.constants';
 import { Product } from './product.model';
 
 
-const initialState = {
+const initialState :ProductState = {
     loading: false,
     list: [{ name: "init"}],
     error: void 0
@@ -36,3 +37,6 @@ export const ProductReducers: ActionReducerMap<FeatureProducts> = {
     products: productReducer
 }
 
+export interface AppState {
+    featureProducts : FeatureProducts
+}

@@ -8,6 +8,10 @@ import { Store } from '@ngrx/store';
   <app-counter></app-counter>
 
   <jedi-list></jedi-list>
+
+<p>TEST</p>
+<app-product></app-product>
+
   `,
   styles: []
 })

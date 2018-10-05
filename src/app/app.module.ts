@@ -1,3 +1,4 @@
+import { ProductModule } from './product/product.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { StoreModule } from '@ngrx/store';
@@ -6,6 +7,8 @@ import { FormsModule } from '@angular/forms';
 import { JediModule } from './jedi/jedi.module';
 import { CounterModule } from './counter/counter.module';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { EffectsModule } from '@ngrx/effects';
+import { ProductEffects } from './product/product.effect';
 
 
 @NgModule({
@@ -21,7 +24,9 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
     }), 
     StoreDevtoolsModule.instrument({
       maxAge: 25
-    })
+    }),
+    EffectsModule.forRoot([ ProductEffects ]),
+    ProductModule
   ],
   providers: [],
   bootstrap: [AppComponent]
