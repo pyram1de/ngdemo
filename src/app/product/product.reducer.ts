@@ -3,24 +3,28 @@ import { ActionReducerMap } from '@ngrx/store';
 import { FETCHING_PRODUCTS, FETCHING_PRODUCTS_ERROR, FETCHING_PRODUCTS_SUCCESSFULLY } from './product.constants';
 import { Product } from './product.model';
 
+export interface ProductState {
+    loading: boolean;
+    list: Product[];
+    error: string;
+}
 
-const initialState :ProductState = {
+const initialState: ProductState = {
     loading: false,
-    list: [{ name: "init"}],
+    list: [],
     error: void 0
 };
-
-export interface ProductState {
-    loading: boolean,
-    list: Product[],
-    error: string
-}
 
 export interface FeatureProducts {
     products: ProductState
 }
 
+export const reducer: ActionReducerMap<FeatureProducts> = {
+    products: productReducer
+}
+
 export function productReducer(state = initialState, action){
+    console.log('reducer', state, action);
     switch(action.type){
         case FETCHING_PRODUCTS_SUCCESSFULLY:
             return { ...state, list: action.payload, loading: false };
@@ -31,12 +35,4 @@ export function productReducer(state = initialState, action){
         default: 
             return state;
     }
-}
-
-export const ProductReducers: ActionReducerMap<FeatureProducts> = {
-    products: productReducer
-}
-
-export interface AppState {
-    featureProducts : FeatureProducts
 }

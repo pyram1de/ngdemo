@@ -2,6 +2,7 @@ import { fetchProducts } from './product.actions';
 import { Component, OnInit } from '@angular/core';
 import { AppState } from '../app-state';
 import { Store } from '@ngrx/store';
+import { getList, isLoading, getError } from './product.selectors';
 
 
 @Component({
@@ -18,7 +19,7 @@ import { Store } from '@ngrx/store';
     <div *ngIf="error$ | async; let error" >
       <div *ngIf="error">
         loading...
-      </div>
+      </div> 
     </div>
   `,
   styles: []
@@ -29,9 +30,9 @@ export class ProductComponent implements OnInit {
   error$;
 
   constructor(private store: Store<AppState>) {
-    this.product$ = this.store.select(store=>store.products.products.list);
-    this.loading$ = this.store.select(store=>store.products.products.loading);
-    this.error$ = this.store.select(store=>store.products.products.error);
+    this.product$ = this.store.select(getList);
+    this.loading$ = this.store.select(isLoading);
+    this.error$ = this.store.select(getError);
   }
 
   ngOnInit() {

@@ -5,5 +5,5 @@ import { FeatureProducts } from './product/product.reducer';
 export interface AppState {
     counter : CounterState,
     jediList: Jedi[],
-    products : FeatureProducts
+    featureProducts : FeatureProducts
 }
