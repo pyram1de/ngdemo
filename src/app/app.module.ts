@@ -29,6 +29,7 @@ import { ProductEffects } from './product/product.effect';
     ProductModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  exports: [FormsModule]
 })
 export class AppModule { }
